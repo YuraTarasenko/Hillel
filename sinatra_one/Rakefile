@@ -1,0 +1,14 @@
+require_relative 'config/configuration'
+require 'yaml'
+
+namespace :db do
+  task :migrate do
+    ActiveRecord::Migrator.migrate('db/migrations', nil)
+  end
+
+  task :seed do
+    require_relative 'db/seed'
+
+    Seed.seed
+  end
+end

@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+
+require "bundler/setup"
+require "name_gen"
+
+Options = Struct.new(:type, :len)
+
+class Parser
+  def self.parse(options)
+    args = Options.new('markov', 3)
+
+    opt_parser = OptionParser.new do |opts|
+      opts.banner = "Usage: name_gen [OPTIONS]. List of available options:"
+
+      opts.on("-t TYPE", "--type=TYPE", "Type of generator") do |type|
+        args.type = type
+      end
+
+      opts.on("-l LEN", "--len=LEN", "Number of syllables for name", Integer) do |len|
+        args.len = len
+      end
+
+      opts.on("-h", "--help", "Prints this help") do
+        puts opts
+        exit
+      end
+    end
+
+    opt_parser.parse!(options)
+    return args
+  end
+end
+
+options = Parser.parse(ARGV)
+
+NameGen::init(options.type.to_sym)
+puts NameGen::get_name(options.len)

@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    title Shop
+
+    script(src="/js/main.js")
+
+  body
+    h1 Hello world!
+
+
+    - products.each do |product|
+      a(href="/products/#{product.id}") #{product.title}
+      br

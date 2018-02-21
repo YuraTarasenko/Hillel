@@ -1,0 +1,13 @@
+ul
+  - product.errors.messages.each do |field_name, messages|
+    li #{field_name}:
+    - messages.each do |message|
+      li #{message}
+
+
+form(action='/admin/products' method='POST')
+  input(name='title' type='text' placeholder='Product Title')
+  textarea(name='description' placeholder='Product Description')
+  input(name='price' placeholder='Product price' type='number')
+
+  input(type='submit' value='Create new product')

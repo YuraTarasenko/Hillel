@@ -1,0 +1,31 @@
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @post.body %>
+</p>
+
+<p>
+  <strong>Author email:</strong>
+  <%= @post.user.email %>
+</p>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
+
+<div class="row">
+  <table class="table">
+    <% @post.comments.each do |comment| %>
+      <tr>
+        <td><%= comment.user.email %>: </td>
+        <td><%= comment.body %></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <%= render 'comments/form', comment: @comment, post: @post %>
+
+</div>

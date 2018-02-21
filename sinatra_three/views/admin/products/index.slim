@@ -1,0 +1,13 @@
+h1 Admin Panel!
+
+- products.each do |product|
+  a(href="/products/#{product.id}") #{product.title}
+  a(href="/admin/products/#{product.id}/update") Update this product
+  form(action="/admin/products/#{product.id}" method='POST')
+    input(type='hidden' name='_method' value='DELETE')
+    input(type='submit' value='Delete this product')
+
+  br
+
+.
+  a(href='/admin/products/new') Create new product

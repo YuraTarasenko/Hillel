@@ -1,0 +1,20 @@
+---
+  seed:
+    -
+      name: time
+      params: "{}"
+    -
+      name: sleep
+      params: "{\"time\":8}"
+    -
+      name: stop
+      params: "{}"
+    -
+      name: location
+      params: "{}"
+    -
+      name: weather
+      params: "{\"city_name\": \"Odessa\"}"
+    -
+      name: date
+      params: "{}"

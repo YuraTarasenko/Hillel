@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <title>Background job dashboard</title>
+  </head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#add_argument').click(function(event) {
+        event.preventDefault();
+        $('#args').append('<input type="text" name="args[' + $('#arg_name').val() + ']" placeholder="' + $('#arg_name').val() + '">');
+      });
+    });
+  </script>
+  <body>
+    <h2>Current tasks</h2>
+    <table>
+      <thead>
+        <th>Name</th>
+        <th>Params</th>
+        <th>Status</th>
+      </thead>
+      <tbody>
+        <% tasks.each do |task| %>
+          <tr>
+            <td><%= task.name %></td>
+            <td><%= task.params %></td>
+            <td><%= task.done ? 'finished' : 'new' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div>
+      <input type="text" id="arg_name" placeholder="argument name">
+      <button id="add_argument">Add new param</button>
+    </div>
+
+    <form method="post" action="/">
+      <input type="text" name="name" placeholder="name">
+      <div id="args">
+
+      </div>
+      <input type="submit" value="create new task">
+    </form>
+  </body>
+</html>
